@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var opts = {
   maxResults: 10,
-  key: '' // YouTube Data API Access Token
+  key: process.env["YOUTUBE_API_TOKEN"] || process.argv[2]
 };
 
 app.get('/', function(req, res) {
