@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>YouTube Music</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="w-100" id="app">
+
+	<div class="container mb-3">
+		<div class="wrapper w-100">
+			<input autocomplete="off" v-model="search" ref="search" type="text" v-bind:class="[results ? 'focus' : '', 'form-control form-control-lg search']" placeholder="Search...">
+			<div ref="results" class="list-group results w-100">
+				<div v-on:click="loadVideo(item.id,item.title)" v-for="item in results" class="list-group-item list-group-item-action">{{item.title}}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mb-3">
+		<div class="d-block m-auto w-100" id="player"></div>
+	</div>
+
+	<div class="container mb-3">
+		<div class="list-group" v-if="playlist.length">
+			<div class="list-group-item bg-light font-weight-bold">Playlist</div>
+			<div v-on:click="loadVideo(item.id)" class="list-group-item list-group-item-action" v-bind:data-id="item.id" v-for="item in playlist">{{item.title}}</div>
+		</div>
+	</div>
+
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="/js/lodash.min.js"></script>
+<script src="/js/jquery-3.2.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/vue.js"></script>
+<script src="/js/vue-resource.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
